@@ -1,0 +1,26 @@
+[package]
+name = "bytes_diff_showdown"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"
+# usually under dev-dependencies, but this is a cargo project that is *only* benchmarks.
+criterion = { version = "0.4", features = ["html_reports"] }
+cargo-criterion = "1.1.0"
+
+[[bench]]
+name = "bench_showdown"
+harness = false
+
+[profile.bench]
+opt-level = 3
+debug = false
+codegen-units = 1
+lto = 'thin'
+incremental = false
+debug-assertions = false
+overflow-checks = false
+rpath = false
